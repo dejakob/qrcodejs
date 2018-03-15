@@ -1,17 +1,31 @@
-/**
- * @fileoverview
- * - Using the 'QRCode for Javascript library'
- * - Fixed dataset of 'QRCode for Javascript library' for support full-spec.
- * - this library has no dependencies.
- * 
- * @author davidshimjs
- * @see <a href="http://www.d-project.com/" target="_blank">http://www.d-project.com/</a>
- * @see <a href="http://jeromeetienne.github.com/jquery-qrcode/" target="_blank">http://jeromeetienne.github.com/jquery-qrcode/</a>
- */
-var QRCode;
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define([], factory);
+    } else if (typeof module === 'object' && module.exports) {
+        // Node. Does not work with strict CommonJS, but
+        // only CommonJS-like environments that support module.exports,
+        // like Node.
+        module.exports = factory();
+    } else {
+        // Browser globals (root is window)
+        root.returnExports = factory();
+  }
+}(typeof self !== 'undefined' ? self : this, function () {
 
-(function () {
-	//---------------------------------------------------------------------
+	/**
+	 * @fileoverview
+	 * - Using the 'QRCode for Javascript library'
+	 * - Fixed dataset of 'QRCode for Javascript library' for support full-spec.
+	 * - this library has no dependencies.
+	 * 
+	 * @author davidshimjs
+	 * @see <a href="http://www.d-project.com/" target="_blank">http://www.d-project.com/</a>
+	 * @see <a href="http://jeromeetienne.github.com/jquery-qrcode/" target="_blank">http://jeromeetienne.github.com/jquery-qrcode/</a>
+	 */
+	var QRCode;
+
+    //---------------------------------------------------------------------
 	// QRCode for JavaScript
 	//
 	// Copyright (c) 2009 Kazuhiko Arase
@@ -611,4 +625,6 @@ var QRCode;
 	 * @name QRCode.CorrectLevel
 	 */
 	QRCode.CorrectLevel = QRErrorCorrectLevel;
-})();
+	
+    return QRCode;
+}));
